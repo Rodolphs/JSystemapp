@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_pedidos"
+            android:icon="@drawable/pedido_mao"
+            android:title="Pedidos"
+            android:checked="true"/>
+
+        <item
+            android:id="@+id/nav_cancelarPedido"
+            android:icon="@drawable/cancelar"
+            android:title="Cancelar Pedido" />
+
+        <item
+            android:id="@+id/nav_solicitacoes"
+            android:icon="@drawable/solicitacao"
+            android:title="solicitações" />
+
+       
+    </group>
+</menu>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/layourMenuLateral"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+    
+    <!--Conteúdo da tela-->
+    <LinearLayout
+            android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  tools:context=".TelaInicialActivity" android:background="@android:color/black">
+        
+        <include layout="@layout/toolbar"/>
+    
+        <TextView
+                android:text="Faça seu pedido :)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView"
+                android:textColor="@android:color/white" android:textSize="30sp"/>
+        <TextView
+                android:text="Comida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView3"
+                android:textColor="@android:color/white" android:textSize="12sp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText" android:backgroundTint="@color/colorAccent"
+                android:textColor="@android:color/white"/>
+        <TextView
+                android:text="bebida"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView4"
+                android:textColor="@android:color/white" android:textSize="12sp"/>
+	    <EditText
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:inputType="textPersonName"
+			    android:ems="10"
+			    android:id="@+id/editText2" android:backgroundTint="@color/colorAccent"
+			    android:textColor="@android:color/white"/>
+        <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+        
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+
+                    android:padding="16dp">
+            
+                <TextView
+                        android:id="@+id/mensagemInicial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"/>
+	
+	            <Button
+			            android:id="@+id/botaoPedido"
+			            android:layout_width="match_parent"
+			            android:layout_height="40dp"
+			            android:text="Pedir"/>
+	            <Button
+			            android:id="@+id/botaoSair"
+			            android:layout_width="match_parent"
+			            android:layout_height="40dp"
+			            android:text="SAIR"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    
+    
+    <!--Menu lateral-->
+    <android.support.design.widget.NavigationView
+            android:id="@+id/menu_lateral"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/menu_lateral_cabecalho"
+            app:menu="@menu/menu_lateral"/>
+
+</android.support.v4.widget.DrawerLayout>
+

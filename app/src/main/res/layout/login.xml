@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/common_google_signin_btn_text_dark_focused">
+    
+    <TextView
+            android:id="@+id/texto_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mensagem_login"/>
+    <TextView
+            android:id="@+id/texto_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuário" android:textColor="@android:color/white"/>
+    
+    <EditText
+            android:id="@+id/campo_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"/>
+    
+    <TextView
+            android:id="@+id/texto_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Senha" android:textColor="@android:color/white"/>
+    
+    <EditText
+            android:id="@+id/campo_senha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword" android:backgroundTint="@android:color/holo_red_dark"
+            android:textColor="@android:color/white"/>
+    
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+    >
+        <Button
+                android:id="@+id/botao_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:stateListAnimator="@null"/>
+
+
+    </FrameLayout>
+    
+    <ImageView
+            android:id="@+id/campo_imagem"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:src="@drawable/apresentacao_jegues_bar_system"/>
+
+
+</LinearLayout>
+
