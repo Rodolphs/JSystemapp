@@ -37,7 +37,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         mensagem.text = "Bem vindo $nome"
 
         val botaoSair = findViewById<Button>(R.id.botaoSair)
-        botaoSair.setOnClickListener {cliqueSair()}
+        botaoSair.setOnClickListener { cliqueSair() }
 
         // colocar toolbar
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -57,10 +57,16 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     // configuração do navigation Drawer com a toolbar
     private fun configuraMenuLateral() {
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
-        var menuLateral = findViewById<DrawerLayout>(R.id.layourMenuLateral)
+        var menuLateral = findViewById<DrawerLayout>(R.id.layoutMenuLateral)
 
         // ícone de menu (hamburger) para mostrar o menu
-        var toogle = ActionBarDrawerToggle(this, menuLateral, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        var toogle = ActionBarDrawerToggle(
+            this,
+            menuLateral,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
 
         menuLateral.addDrawerListener(toogle)
         toogle.syncState()
@@ -74,29 +80,35 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_pedidos -> {
-                Toast.makeText(this, "Clicou Pedidos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Pedidos", Toast.LENGTH_SHORT).show()
+                val intentPedido = Intent(context, PedidosActivity::class.java)
+                startActivityForResult(intentPedido, 1)
             }
 
             R.id.nav_cancelarPedido -> {
-                Toast.makeText(this, "Clicou em cacelar pedido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Cancelar pedido", Toast.LENGTH_SHORT).show()
+                val intentCancelarPedido = Intent(context, CancelarPedidoActivity::class.java)
+                startActivityForResult(intentCancelarPedido, 1)
             }
 
             R.id.nav_solicitacoes -> {
-                Toast.makeText(this, "Clicou solicitação", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Solicitação", Toast.LENGTH_SHORT).show()
+                val intentSolicitacao = Intent(context, SolicitacaoActivity::class.java)
+                startActivityForResult(intentSolicitacao, 1)
             }
 
         }
 
         // fecha menu depois de tratar o evento
-        val drawer = findViewById<DrawerLayout>(R.id.layourMenuLateral)
+        val drawer = findViewById<DrawerLayout>(R.id.layoutMenuLateral)
         drawer.closeDrawer(GravityCompat.START)
         return true
     }
 
     fun cliqueSair() {
         val returnIntent = Intent();
-        returnIntent.putExtra("result","Saída da tela de pedido");
-        setResult(Activity.RESULT_OK,returnIntent);
+        returnIntent.putExtra("result", "Saída da tela de pedido");
+        setResult(Activity.RESULT_OK, returnIntent);
         finish();
     }
 
@@ -105,7 +117,8 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         // infla o menu com os botões da ActionBar
         menuInflater.inflate(R.menu.menu_main, menu)
         // vincular evento de buscar
-        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        (menu?.findItem(R.id.action_buscar)?.actionView as SearchView).setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
 
             override fun onQueryTextChange(newText: String): Boolean {
                 // ação enquanto está digitando
@@ -126,7 +139,7 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         val id = item?.itemId
         // verificar qual item foi clicado e mostrar a mensagem Toast na tela
         // a comparação é feita com o recurso de id definido no xml
-        if  (id == R.id.action_buscar) {
+        if (id == R.id.action_buscar) {
             Toast.makeText(context, "Botão de buscar", Toast.LENGTH_LONG).show()
         } else if (id == R.id.action_atualizar) {
             Toast.makeText(context, "Botão de atualizar", Toast.LENGTH_LONG).show()

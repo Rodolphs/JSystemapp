@@ -1,12 +1,13 @@
 package br.com.jeguesbar.appjsystemapp
 
+import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import br.com.jeguesbar.appjsystemapp.R
 
-class MainActivity : DebugActivity() {
+class   MainActivity : DebugActivity() {
 
     private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,9 +21,7 @@ class MainActivity : DebugActivity() {
         val texto = findViewById<TextView>(R.id.texto_login)
         texto.text = getString(R.string.mensagem_login)
 
-
         val botaoLogin = findViewById<Button>(R.id.botao_login)
-
 
         botaoLogin.setOnClickListener {onClickLogin() }
 
@@ -57,6 +56,7 @@ class MainActivity : DebugActivity() {
         }
 
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 1) {
