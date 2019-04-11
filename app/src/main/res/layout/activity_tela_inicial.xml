@@ -67,11 +67,7 @@
 			            android:layout_width="match_parent"
 			            android:layout_height="40dp"
 			            android:text="Pedir"/>
-	            <Button
-			            android:id="@+id/botaoSair"
-			            android:layout_width="match_parent"
-			            android:layout_height="40dp"
-			            android:text="SAIR"/>
+	            
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

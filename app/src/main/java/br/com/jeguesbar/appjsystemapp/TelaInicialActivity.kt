@@ -35,9 +35,9 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         val mensagem = findViewById<TextView>(R.id.mensagemInicial)
         mensagem.text = "Bem vindo $nome"
-
-        val botaoSair = findViewById<Button>(R.id.botaoSair)
-        botaoSair.setOnClickListener { cliqueSair() }
+//
+//        val botaoSair = findViewById<Button>(R.id.botaoSair)
+//        botaoSair.setOnClickListener { cliqueSair() }
 
         // colocar toolbar
         var toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -95,6 +95,11 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
                 Toast.makeText(this, "Solicitação", Toast.LENGTH_SHORT).show()
                 val intentSolicitacao = Intent(context, SolicitacaoActivity::class.java)
                 startActivityForResult(intentSolicitacao, 1)
+            }
+
+            R.id.nav_sair -> {
+                Toast.makeText(this, "Sair", Toast.LENGTH_SHORT).show()
+                cliqueSair()
             }
 
         }
