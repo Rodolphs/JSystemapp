@@ -8,18 +8,22 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.widget.*
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.support.v7.widget.SearchView
-import android.support.v7.widget.Toolbar
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import br.com.jeguesbar.appjsystemapp.R
+import kotlinx.android.synthetic.main.activity_tela_inicial.*
 
 class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val context: Context get() = this
+
+    private var produtos = listOf<Produtos>()
+    var recyclerProd: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +33,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         // intent é um atributo herdado de Activity
         val args = intent.extras
         // recuperar o parâmetro do tipo String
-        val nome = args.getString("nome")
+        val nomeUser = args.getString("nome")
 
-        Toast.makeText(context, "Parâmetro: $nome", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Parâmetro: $nomeUser", Toast.LENGTH_LONG).show()
 
         val mensagem = findViewById<TextView>(R.id.mensagemInicial)
-        mensagem.text = "Bem vindo $nome"
+        mensagem.text = "Bem vindo $nomeUser"
 //
 //        val botaoSair = findViewById<Button>(R.id.botaoSair)
 //        botaoSair.setOnClickListener { cliqueSair() }
@@ -52,6 +56,33 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
         // configuração do menu lateral
         configuraMenuLateral()
+
+        recyclerProd = recyclerProdutos
+        recyclerProd?.layoutManager = LinearLayoutManager(context)
+        recyclerProd?.itemAnimator = DefaultItemAnimator()
+        recyclerProd?.setHasFixedSize(true)
+
+    }
+
+    fun taskProdutos() {
+
+        produtos = ProdutoService.getProdutos(context)
+        recyclerProd?.adapter = ProdutoAdapter(produtos) {
+            onClickProduto(it)
+        }
+
+    }
+
+    fun onClickProduto(produto: Produtos){
+        Toast.makeText(context, "Clicou ${produto.nome}", Toast.LENGTH_SHORT).show()
+        val intent = Intent(this, ProdutoActivity::class.java)
+        intent.putExtra("produto", produto)
+        startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        taskProdutos()
     }
 
     // configuração do navigation Drawer com a toolbar

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="br.com.jeguesbar.appjsystemapp">
 	
+	<uses-permission android:name="android.permission.INTERNET"/>
+	
 	<application
 			android:allowBackup="true"
 			android:icon="@drawable/apresentacao_jegues_bar_system"
@@ -9,6 +11,8 @@
 			android:roundIcon="@drawable/apresentacao_jegues_bar_system"
 			android:supportsRtl="true"
 			android:theme="@style/AppTheme">
+		<activity android:name=".ProdutoActivity">
+		</activity>
 		<activity android:name=".SolicitacaoActivity">
 		</activity>
 		<activity android:name=".CancelarPedidoActivity">
