@@ -19,12 +19,12 @@ class ProdutoAdapter(
     class ProdutosViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         val cardNome: TextView
-        val cardProgress: ProgressBar
+        //val cardProgress: ProgressBar
         val cardView: CardView
 
         init {
             cardNome = view.card_nome
-            cardProgress = view.card_progress
+            //cardProgress = view.card_progress
             cardView = view.card_produto
         }
 
@@ -55,7 +55,7 @@ class ProdutoAdapter(
         val produto = this.produtos[position]
 
         holder.cardNome.text = produto.nome
-        holder.cardProgress.visibility = View.VISIBLE
+//          holder.cardProgress.visibility = View.VISIBLE
 
 //        Picasso.with(contexto).load(produto.foto).fit()
 //            .into(holder.cardImg,

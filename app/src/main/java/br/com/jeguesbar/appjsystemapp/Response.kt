@@ -1,4 +1,4 @@
-package br.com.fernandosousa.lmsapp
+package br.com.jeguesbar.appjsystemapp
 
 data class Response (val status:String, val msg:String) {
     // verificar se o chamada foi executada com sucesso

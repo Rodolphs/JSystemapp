@@ -66,14 +66,15 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
 
     fun taskProdutos() {
 
-        produtos = ProdutoService.getProdutos(context)
-        recyclerProd?.adapter = ProdutoAdapter(produtos) {
-            onClickProduto(it)
-        }
-
+        Thread {
+            this.produtos = ProdutoService.getProdutos(context)
+            runOnUiThread {
+                recyclerProd?.adapter = ProdutoAdapter(produtos) { onClickProduto(it) }
+            }
+        }.start()
     }
 
-    fun onClickProduto(produto: Produtos){
+    fun onClickProduto(produto: Produtos) {
         Toast.makeText(context, "Clicou ${produto.nome}", Toast.LENGTH_SHORT).show()
         val intent = Intent(this, ProdutoActivity::class.java)
         intent.putExtra("produto", produto)

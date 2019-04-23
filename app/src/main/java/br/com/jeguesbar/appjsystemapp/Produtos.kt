@@ -1,5 +1,6 @@
 package br.com.jeguesbar.appjsystemapp
 
+import com.google.gson.GsonBuilder
 import java.io.Serializable
 
 class Produtos : Serializable {
@@ -12,5 +13,11 @@ class Produtos : Serializable {
 
     override fun toString(): String {
         return "Produtos: $nome"
+    }
+
+    fun toJson(): String {
+
+        return GsonBuilder().create().toJson(this)
+
     }
 }

@@ -1,7 +1,8 @@
-package br.com.fernandosousa.lmsapp
+package br.com.jeguesbar.appjsystemapp
 
 import android.content.Context
 import android.content.SharedPreferences
+import br.com.jeguesbar.appjsystemapp.LMSApplication
 
 object Prefs {
     val PREF_ID = "LMS"
