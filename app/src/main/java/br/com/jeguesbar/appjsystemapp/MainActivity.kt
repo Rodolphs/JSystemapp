@@ -6,8 +6,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import br.com.jeguesbar.appjsystemapp.R
+import kotlinx.android.synthetic.main.login.*
 
-class   MainActivity : DebugActivity() {
+class MainActivity : DebugActivity() {
 
     private val context: Context get() = this
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,18 +24,28 @@ class   MainActivity : DebugActivity() {
 
         val botaoLogin = findViewById<Button>(R.id.botao_login)
 
-        botaoLogin.setOnClickListener {onClickLogin() }
+        botaoLogin.setOnClickListener { onClickLogin() }
 
     }
 
-    fun onClickLogin(){
+    override fun onResume() {
+
+        super.onResume()
+
+        campo_usuario.setText(Prefs.getString("lembrarUser"))
+        campo_senha.setText(Prefs.getString("lembrarSenha"))
+        checkBox.isChecked = Prefs.getBoolean("lembrar")
+
+    }
+
+    fun onClickLogin() {
         val campoUsuario = findViewById<EditText>(R.id.campo_usuario)
         val campoSenha = findViewById<EditText>(R.id.campo_senha)
         val valorUsuario = campoUsuario.text.toString()
         val valorSenha = campoSenha.text.toString()
         //Toast.makeText(context, "$valorUsuario : $valorSenha", Toast.LENGTH_LONG).show()
 
-        if (campoUsuario.text.toString()=="aluno"&& campoSenha.text.toString()=="impacta"){
+        if (campoUsuario.text.toString() == "aluno" && campoSenha.text.toString() == "impacta") {
 
             // criar intent
             val intent = Intent(context, TelaInicialActivity::class.java)
@@ -51,8 +62,22 @@ class   MainActivity : DebugActivity() {
 
             // fazer a chamada esperando resultado
             startActivityForResult(intent, 1)
-        }else{
+        } else {
             Toast.makeText(this, "Usuário ou senha incorreto", Toast.LENGTH_SHORT).show()
+        }
+
+        Prefs.setBoolean("lembrar", checkBox.isChecked)
+        if (checkBox.isChecked) {
+
+            Prefs.setString("lembrarUser", valorUsuario)
+            Prefs.setString("lembrarSenha", valorSenha)
+
+        } else {
+
+            Prefs.setString("lembrarUser", "")
+            Prefs.setString("lembrarSenha", "")
+
+
         }
 
     }

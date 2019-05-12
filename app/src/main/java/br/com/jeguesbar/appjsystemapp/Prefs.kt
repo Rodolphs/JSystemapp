@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import br.com.jeguesbar.appjsystemapp.LMSApplication
 
 object Prefs {
-    val PREF_ID = "LMS"
+    val PREF_ID = "JS"
 
     // retorna o armazém de preferências PREF_ID
     private fun prefs(): SharedPreferences {

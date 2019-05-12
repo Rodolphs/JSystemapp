@@ -38,6 +38,14 @@
             android:inputType="textPassword" android:backgroundTint="@android:color/holo_red_dark"
             android:textColor="@android:color/white"/>
     
+    <CheckBox
+            android:text="Salvar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/checkBox" android:textColor="@android:color/white"
+            android:textColorHint="@android:color/white" android:shadowColor="@android:color/white"
+            android:textColorHighlight="@android:color/white" android:textColorLink="@android:color/white"
+            android:background="@android:color/black" android:backgroundTint="@android:color/black"
+            style="@android:style/Widget.Holo.Light.CompoundButton.CheckBox"/>
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
