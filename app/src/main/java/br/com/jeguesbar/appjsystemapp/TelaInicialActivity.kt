@@ -70,8 +70,10 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
             this.produtos = ProdutoService.getProdutos(context)
             runOnUiThread {
                 recyclerProd?.adapter = ProdutoAdapter(produtos) { onClickProduto(it) }
+                enviaNotificacao()
             }
         }.start()
+
     }
 
     fun onClickProduto(produto: Produtos) {
@@ -190,5 +192,12 @@ class TelaInicialActivity : DebugActivity(), NavigationView.OnNavigationItemSele
         return super.onOptionsItemSelected(item)
     }
 
+    fun enviaNotificacao() {
+
+        val intent = Intent(this, PedidosActivity::class.java)
+
+        NotificationUtil.create(1, intent, "JSystem", "Novidades em seu pedido!")
+
+    }
 
 }
