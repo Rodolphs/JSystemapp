@@ -15,12 +15,14 @@
                   tools:context=".TelaInicialActivity" android:background="@android:color/black">
         
         <include layout="@layout/toolbar"/>
-    
-        <TextView
-                android:text="Faça seu pedido :)"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView"
-                android:textColor="@android:color/white" android:textSize="30sp"/>
+
+		<TextView
+			android:id="@+id/textView"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="Faça seu pedido"
+			android:textColor="@android:color/white"
+			android:textSize="30sp" />
 
 		<ScrollView
                 android:layout_width="match_parent"
